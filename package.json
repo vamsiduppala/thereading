@@ -1,0 +1,21 @@
+{
+  "name": "vedic-prediction-standalone",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Self-contained Vedic prediction backend + a plain-English frontend. Clone, npm install, npm run dev.",
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "start": "npm run start --workspace=@aura/api",
+    "dev": "npm run dev --workspace=@aura/api",
+    "test": "npm run test --workspace=packages/engine && npm run test --workspace=packages/knowledge && npm run test --workspace=@aura/api",
+    "typecheck": "npm run typecheck --workspace=packages/engine && npm run typecheck --workspace=packages/knowledge && npm run typecheck --workspace=@aura/api"
+  },
+  "devDependencies": {},
+  "license": "UNLICENSED"
+}

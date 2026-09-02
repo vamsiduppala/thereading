@@ -1,0 +1,106 @@
+{
+  "$comment": "PIVOT DATA — reference planetary positions from NASA/JPL Horizons (DE441).",
+  "why": "Nothing in this repo validated the engine's planetary longitudes against an external source. vectors.json is a dasha-boundary regression ratchet and says so in its own header. But every sign, house, nakshatra, varga and dasha derives from these longitudes, so an error here is invisible and total. These rows are the independent check.",
+  "source": {
+    "provider": "NASA/JPL Horizons",
+    "endpoint": "https://ssd.jpl.nasa.gov/api/horizons.api",
+    "ephemeris": "DE441",
+    "center": "500@399 (geocentric observer)",
+    "quantity": "31 — ObsEcLon / ObsEcLat",
+    "fetched": "2026-08-25",
+    "note": "No API key is required. Fetched once and committed; the engine is offline-first and must never call this at runtime."
+  },
+  "frame": {
+    "type": "apparent ecliptic-of-date",
+    "detail": "IAU76/80 observer-centred ecliptic longitude of date, corrected for light-time, gravitational deflection and stellar aberration.",
+    "matches": "packages/engine/src/astro/ephemeris.ts returns TROPICAL apparent ecliptic longitude of date — the same frame, so these are directly comparable with no conversion.",
+    "sidereal": "These are TROPICAL. They validate the VSOP87 chain only. The Lahiri ayanamsa is a SEPARATE axis and is not tested by these rows — a wrong ayanamsa shifts every position identically and a tropical comparison cannot see it."
+  },
+  "units": "degrees",
+  "epochs": [
+    "1950-01-01T00:00:00Z",
+    "1975-01-01T00:00:00Z",
+    "2000-01-01T00:00:00Z",
+    "2025-01-01T00:00:00Z",
+    "2050-01-01T00:00:00Z"
+  ],
+  "positions": [
+    {
+      "graha": "sun",
+      "horizonsId": "10",
+      "rows": [
+        { "utc": "1950-01-01T00:00:00Z", "eclipticLongitude": 280.0048301, "eclipticLatitude": -0.0000093 },
+        { "utc": "1975-01-01T00:00:00Z", "eclipticLongitude": 279.9345415, "eclipticLatitude": -0.0002002 },
+        { "utc": "2000-01-01T00:00:00Z", "eclipticLongitude": 279.8592049, "eclipticLatitude": 0.0002403 },
+        { "utc": "2025-01-01T00:00:00Z", "eclipticLongitude": 280.8136000, "eclipticLatitude": -0.0001656 },
+        { "utc": "2050-01-01T00:00:00Z", "eclipticLongitude": 280.7483820, "eclipticLatitude": 0.0001127 }
+      ]
+    },
+    {
+      "graha": "moon",
+      "horizonsId": "301",
+      "rows": [
+        { "utc": "1950-01-01T00:00:00Z", "eclipticLongitude": 61.4154091, "eclipticLatitude": 3.7818195 },
+        { "utc": "1975-01-01T00:00:00Z", "eclipticLongitude": 139.1884502, "eclipticLatitude": -4.8717471 },
+        { "utc": "2000-01-01T00:00:00Z", "eclipticLongitude": 217.2933209, "eclipticLatitude": 5.2312994 },
+        { "utc": "2025-01-01T00:00:00Z", "eclipticLongitude": 293.9135958, "eclipticLatitude": -4.6098927 },
+        { "utc": "2050-01-01T00:00:00Z", "eclipticLongitude": 18.6755966, "eclipticLatitude": 3.3912133 }
+      ]
+    },
+    {
+      "graha": "mercury",
+      "horizonsId": "199",
+      "rows": [
+        { "utc": "1950-01-01T00:00:00Z", "eclipticLongitude": 299.4472523, "eclipticLatitude": -1.2243635 },
+        { "utc": "1975-01-01T00:00:00Z", "eclipticLongitude": 287.0434710, "eclipticLatitude": -2.1061743 },
+        { "utc": "2000-01-01T00:00:00Z", "eclipticLongitude": 271.1117994, "eclipticLatitude": -0.9456805 },
+        { "utc": "2025-01-01T00:00:00Z", "eclipticLongitude": 259.8699677, "eclipticLatitude": 1.1135102 },
+        { "utc": "2050-01-01T00:00:00Z", "eclipticLongitude": 270.0594881, "eclipticLatitude": 3.1357631 }
+      ]
+    },
+    {
+      "graha": "venus",
+      "horizonsId": "299",
+      "rows": [
+        { "utc": "1950-01-01T00:00:00Z", "eclipticLongitude": 316.9794775, "eclipticLatitude": 0.6307865 },
+        { "utc": "1975-01-01T00:00:00Z", "eclipticLongitude": 293.3809132, "eclipticLatitude": -1.2331736 },
+        { "utc": "2000-01-01T00:00:00Z", "eclipticLongitude": 240.9614017, "eclipticLatitude": 2.0802345 },
+        { "utc": "2025-01-01T00:00:00Z", "eclipticLongitude": 327.7120986, "eclipticLatitude": -1.4052716 },
+        { "utc": "2050-01-01T00:00:00Z", "eclipticLongitude": 281.2480376, "eclipticLatitude": -0.6060626 }
+      ]
+    },
+    {
+      "graha": "mars",
+      "horizonsId": "499",
+      "rows": [
+        { "utc": "1950-01-01T00:00:00Z", "eclipticLongitude": 182.2111967, "eclipticLatitude": 2.5124824 },
+        { "utc": "1975-01-01T00:00:00Z", "eclipticLongitude": 254.9592652, "eclipticLatitude": -0.2040853 },
+        { "utc": "2000-01-01T00:00:00Z", "eclipticLongitude": 327.5754592, "eclipticLatitude": -1.0740062 },
+        { "utc": "2025-01-01T00:00:00Z", "eclipticLongitude": 121.9179094, "eclipticLatitude": 3.9146227 },
+        { "utc": "2050-01-01T00:00:00Z", "eclipticLongitude": 227.7146934, "eclipticLatitude": 0.7726782 }
+      ]
+    },
+    {
+      "graha": "jupiter",
+      "horizonsId": "599",
+      "rows": [
+        { "utc": "1950-01-01T00:00:00Z", "eclipticLongitude": 306.5053249, "eclipticLatitude": -0.5839976 },
+        { "utc": "1975-01-01T00:00:00Z", "eclipticLongitude": 343.3148465, "eclipticLatitude": -1.1658106 },
+        { "utc": "2000-01-01T00:00:00Z", "eclipticLongitude": 25.2331086, "eclipticLatitude": -1.2647766 },
+        { "utc": "2025-01-01T00:00:00Z", "eclipticLongitude": 73.2154465, "eclipticLatitude": -0.6015672 },
+        { "utc": "2050-01-01T00:00:00Z", "eclipticLongitude": 121.6915480, "eclipticLatitude": 0.4580707 }
+      ]
+    },
+    {
+      "graha": "saturn",
+      "horizonsId": "699",
+      "rows": [
+        { "utc": "1950-01-01T00:00:00Z", "eclipticLongitude": 169.4374218, "eclipticLatitude": 2.0062101 },
+        { "utc": "1975-01-01T00:00:00Z", "eclipticLongitude": 105.8744363, "eclipticLatitude": -0.4005646 },
+        { "utc": "2000-01-01T00:00:00Z", "eclipticLongitude": 40.4058374, "eclipticLatitude": -2.4472226 },
+        { "utc": "2025-01-01T00:00:00Z", "eclipticLongitude": 344.5240525, "eclipticLatitude": -1.9775609 },
+        { "utc": "2050-01-01T00:00:00Z", "eclipticLongitude": 297.5742799, "eclipticLatitude": -0.2035839 }
+      ]
+    }
+  ]
+}
