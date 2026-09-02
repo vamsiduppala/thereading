@@ -1,0 +1,41 @@
+{
+  "$comment": "PIVOT DATA — reference ascendants and Lahiri ayanamsa values, supplied by the project owner.",
+  "why": "The Horizons fixture validates planetary longitudes but is TROPICAL, so it is blind to two things: the ascendant (which comes from sidereal time and obliquity, not from the ephemeris at all) and the ayanamsa (which shifts every position identically). These rows close both gaps. Nothing had ever checked either one against an external source.",
+  "source": {
+    "provider": "Project owner, 2026-08-25",
+    "derivation": "Swiss Ephemeris SE_SIDM_LAHIRI; ayanamsa values stated as from the Indian Astronomical Ephemeris.",
+    "note": "Independently spot-checked before adoption. New York and Sydney were hand-computed from RAMC = GMST + longitude and the standard ascendant formula, giving 274.233 and 152.506 against the supplied 274.24 and 152.49. Both hold. This check was not ceremonial: an earlier vector from the same source was 7.08 degrees wrong and was rejected."
+  },
+  "epoch": {
+    "utc": "2000-01-01T12:00:00Z",
+    "julianDay": 2451545.0,
+    "gmstDeg": 280.4606,
+    "trueObliquityDeg": 23.4393,
+    "why": "All eight vectors are locked to ONE epoch on purpose. Freezing the Julian Day, GMST and obliquity means the eight differ only in latitude and longitude, so they test the ascendant geometry across the globe without date-drift confounding it."
+  },
+  "ascendants": {
+    "units": "degrees",
+    "siderealNote": "The sidereal column is the tropical minus the supplied J2000 Lahiri value of 23.8570. It therefore carries that value's error and is NOT an independent check of our ayanamsa — the ayanamsa rows below are.",
+    "rows": [
+      { "place": "New York City, USA", "lat": 40.7128, "lngEast": -74.0060, "tropical": 274.24, "sidereal": 250.38 },
+      { "place": "Tokyo, Japan", "lat": 35.6762, "lngEast": 139.6503, "tropical": 155.26, "sidereal": 131.41 },
+      { "place": "Sydney, Australia", "lat": -33.8688, "lngEast": 151.2093, "tropical": 152.49, "sidereal": 128.63 },
+      { "place": "Quito, Ecuador", "lat": -0.1807, "lngEast": -78.4678, "tropical": 290.40, "sidereal": 266.54 },
+      { "place": "Reykjavik, Iceland", "lat": 64.1466, "lngEast": -21.9426, "tropical": 291.45, "sidereal": 267.59 },
+      { "place": "Mumbai, India", "lat": 19.0760, "lngEast": 72.8777, "tropical": 91.80, "sidereal": 67.94 },
+      { "place": "Cape Town, South Africa", "lat": -33.9249, "lngEast": 18.4241, "tropical": 24.28, "sidereal": 0.42 },
+      { "place": "Ushuaia, Argentina", "lat": -54.8019, "lngEast": -68.3030, "tropical": 321.18, "sidereal": 297.32 }
+    ]
+  },
+  "lahiriAyanamsa": {
+    "units": "degrees",
+    "rows": [
+      { "utc": "1900-01-01T12:00:00Z", "julianDay": 2415021.0, "ayanamsa": 22.4594 },
+      { "utc": "1950-01-01T12:00:00Z", "julianDay": 2433283.0, "ayanamsa": 23.1556 },
+      { "utc": "2000-01-01T12:00:00Z", "julianDay": 2451545.0, "ayanamsa": 23.8570 },
+      { "utc": "2025-01-01T12:00:00Z", "julianDay": 2460676.0, "ayanamsa": 24.2053 }
+    ],
+    "measuredAgreement": "Our lahiriAyanamsa() sits within 14.4 arcsec of every row: -10.6, -3.4, -14.4, -11.0 arcsec at 1900, 1950, 2000, 2025.",
+    "whyTheAnchorWasNotRETUNED": "The residuals are NOT a constant offset, so no anchor change can remove them. The four supplied values are not internally self-consistent: the precession rates they imply across the three intervals are 50.13, 50.50 and 50.16 arcsec/yr, whereas general precession in longitude is ~50.29 arcsec/yr and varies by only ~0.0002 arcsec/yr per year over this span. A single smooth series cannot produce that scatter. Shifting LAHIRI_J2000 to 23.8570 would zero the 2000 residual and make 1950 worse (-3.4 to +11.0 arcsec); a least-squares anchor would fit the noise. Under the standing rule 'never invent a number to make a test pass', the anchor stays at 23.853 and the agreement is asserted at the level the data actually supports."
+  }
+}
