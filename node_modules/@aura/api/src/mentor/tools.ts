@@ -27,7 +27,7 @@ import {
   type DashaPeriod, type Graha, type RingVisibility,
 } from '@aura/engine';
 import { search as searchKnowledge, getGraha, getRasi, getBhava, getNakshatra } from '@aura/knowledge';
-import { office, planet } from '@vim/tokens';
+import { office, planet } from './tokens.js';
 
 // ── Vocabulary ───────────────────────────────────────────────────────────────
 // Office names come from the generated tokens, so the Mentor cannot end up calling a period
